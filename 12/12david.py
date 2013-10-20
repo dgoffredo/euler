@@ -12,12 +12,14 @@ def factorsOf(n):
 # or (n+1)/2 and n (if n is odd).
 
 # The trick is to notice that t(n) and t(n+1)
-# share a factor: namely, (n+1). So you need
-# calculate the factors of (n+1) only once for
-# two adjacent numbers. This makes the problem
-# scale much more nicely. I use the list 'sharedFactors'
-# here to store those unchanged values between any two iterations.
-
+# share a factor (n+1)/2:
+# n(n+1)/2     (n+1)(n+2)/2
+#
+# So for a sequence
+#
+# 1(1+1)/2     (1+1)(1+2)/2  ...
+#
+# You need calculate the factors of (1+1)/2 only once.
 
 def triNum(n):
     return n * (n+1) // 2
