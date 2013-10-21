@@ -4,6 +4,7 @@ from sys import argv
 
 default = 1000
 upTo = default if len(argv) < 2 else int(argv[1])
+bottom = 1 if len(argv) < 3 or argv[2] != 'only' else upTo
 
 class English:
     def __init__(self):
@@ -15,7 +16,9 @@ class English:
                         'sixty', 'seventy', 'eighty', 'ninety' ]
 
         self.higher = [ 'hundred', 'thousand', 'million', 'billion', 
-                        'trillion', 'quadrillion', 'quintillion', 'brazilian' ]
+                        'trillion', 'quadrillion', 'quintillion', 'sextillion',
+                        'septillion', 'octillian', 'nontillion', 
+                        'brazilian'] + ['getthefuckoutillion' for _ in range(94)]
 
         self.andWord = 'and'
 
@@ -63,11 +66,11 @@ def sayNumber(num, locale):
     return statement[1:] # trim leading space
 
 totalCount = 0
-for i in range(1, upTo + 1):
+for i in range(bottom, upTo + 1):
     said = sayNumber(i, locale)
     count = len(said.replace(',','').replace(' ','').replace('-',''))
     print('"{}" has {} letters'.format(sayNumber(i, locale), count))
     totalCount += count
 
-print('There were a total of {} letters', totalCount)
+print('There were a total of {} letters'.format(totalCount))
 print(totalCount)
