@@ -26,5 +26,12 @@ from sys import argv
 default = 20
 n = default if len(argv) < 2 else int(argv[1])
 
-print( factorial(2*n) // factorial(n)**2 )
-    
+# print( factorial(2*n) // factorial(n)**2 )
+#
+# Ok, I'll use a small optimization:
+#
+#     (2n)! / n!**2 = product(n + 1 to 2n) / n!
+#
+from operator import mul
+from functools import reduce
+print( reduce(mul, range(n+1, 2*n+1)) // factorial(n) ) 
